@@ -1,24 +1,36 @@
 """
-CP1404/CP5632 - Practical - Suggested Solution
-Fixed program to determine score status
+CP1404 - Week 3 Practical
+Program to determine result based on numeric score
 """
 
-# Check your boundary conditions (e.g. >= 50 should be a pass, not just > 50)
-# Think about efficiency and nesting; use the fewest number of if/elif
-# "The Zen of Python" says, "Flat is better than nested."
-# https://www.python.org/dev/peps/pep-0020/
-# Also note that here we only have one path for "Invalid score" (DRY principle)
-# You want to make sure the last path is "else", not "elif" as we always want a result here,
-# so there should be no final condition (if it wasn't one of the earlier possibilities,
-# it must be the last thing, no need to check if it is)
+import random
 
-score = float(input("Enter score: "))
 
-if score < 0 or score > 100:
-    print("Invalid Score")
-elif score >= 90:
-    print("Excellent")
-elif score >= 50:
-    print("Pass")
-else:
-    print("Bad")
+def main():
+    user_score = get_score()
+    print(calc_result(user_score))
+
+    print("Random User Score:")
+    random_score = random.randint(0, 101)
+    print(random_score)
+    print(calc_result(random_score))
+
+
+def get_score():
+    input_score = float(input("Enter Score: "))
+    return input_score
+
+
+def calc_result(score):
+    if score < 0 or score > 100:
+        result = "Invalid Score"
+    elif score >= 90:
+        result = "Excellent"
+    elif score >= 50:
+        result = "Pass"
+    else:
+        result = "Bad"
+    return result
+
+
+main()
