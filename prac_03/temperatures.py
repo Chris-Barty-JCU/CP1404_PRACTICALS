@@ -1,27 +1,46 @@
 """
-CP1404/CP5632 - Practical
-Pseudocode for temperature conversion
+CP1404 - Week 3 Practical
+Program to convert between degrees Celsius and Fahrenheit
 """
 
-MENU = """C - Convert Celsius to Fahrenheit
-F - Convert Fahrenheit to Celsius
-Q - Quit"""
-print(MENU)
-choice = input(">>> ").upper()
-while choice != "Q":
-    if choice == "C":
-        celsius = float(input("Celsius: "))
-        fahrenheit = celsius * 9.0 / 5 + 32
-        print("Result: {:.2f} F".format(fahrenheit))
-    elif choice == "F":
-        # TODO: Write this section to convert F to C and display the result
-        # Hint: celsius = 5 / 9 * (fahrenheit - 32)
-        # Remove the "pass" statement when you are done. It's a placeholder.
-        fahrenheit = float(input("Fahrenheit: "))
-        celsius = 5 / 9 * (fahrenheit - 32)
-        print("Result: {:.2f} C".format(celsius))
-    else:
-        print("Invalid option")
-    print(MENU)
-    choice = input(">>> ").upper()
-print("Thank you.")
+
+def main():
+    conversion_menu = """        TEMPERATURE CONVERSION TOOL
+        C - Convert Celsius to Fahrenheit
+        F - Convert Fahrenheit to Celsius
+        Q - Quit"""
+    print(conversion_menu)
+    menu_option = input("Option: ").upper()
+
+    while menu_option != "Q":
+        if menu_option == "C":
+            user_temp = get_temp()
+            converted_temp = convert_celsius_fahrenheit(user_temp)
+            print("{:.2f} Degrees Celsius = {:.2f} Degrees Fahrenheit".format(user_temp, converted_temp))
+            menu_option = input("Option: ").upper()
+        elif menu_option == "F":
+            user_temp = get_temp()
+            converted_temp = convert_fahrenheit_celsius(user_temp)
+            print("{:.2f} Degrees Fahrenheit = {:.2f} Degrees Celsius".format(user_temp, converted_temp))
+            menu_option = input("Option: ").upper()
+        else:
+            print("Invalid Option - Choose Again")
+            menu_option = input("Option: ").upper()
+
+
+def get_temp():
+    user_temp = float(input("Temperature: "))
+    return user_temp
+
+
+def convert_celsius_fahrenheit(temperature):
+    fahrenheit = temperature * 9.0 / 5 + 32
+    return fahrenheit
+
+
+def convert_fahrenheit_celsius(temperature):
+    celsius = 5 / 9 * (temperature - 32)
+    return celsius
+
+
+main()
