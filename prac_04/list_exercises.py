@@ -5,8 +5,16 @@ Program to prompt user for numbers and output various statistics
 
 
 def main():
+    # Part 1 - Basic list operations
     num_list = get_numbers()
     display_statistics(num_list)
+
+    # Part 2 - Woefully inadequate security checker
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
+                 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer',
+                 'bob']
+    username = get_username()
+    check_access(username, usernames)
 
 
 def get_numbers():
@@ -26,7 +34,21 @@ def display_statistics(num_list):
     print("The last number is {}".format(num_list[-1]))
     print("The smallest number is {}".format(min(num_list)))
     print("The largest number is {}".format(max(num_list)))
-    print("The average of the numbers is {}".format(sum(num_list)/len(num_list)))
+    print("The average of the numbers is {}".format(sum(num_list) / len(num_list)))
+
+
+def get_username():
+    """Get the username from a user"""
+    username = input("Enter your username: ")
+    return username
+
+
+def check_access(username, user_list):
+    """Check if a username is in a list of users and print access level"""
+    if username in user_list:
+        print("Access Granted")
+    else:
+        print("Access Denied")
 
 
 main()
