@@ -1,5 +1,5 @@
 """
-CP1404/CP5632 Practical
+CP1404 - Week 4 Practical
 List comprehensions
 """
 
@@ -29,12 +29,16 @@ print(a_names)
 
 # TODO: use a list comprehension to create a list of all of the full_names
 # in lowercase format
-# lowercase_full_names =
+lowercase_full_names = [[x.lower() for x in full_names]]
+print(lowercase_full_names)
 
 almost_numbers = ['0', '10', '21', '3', '-7', '88', '9']
 # TODO: use a list comprehension to create a list of integers
 # from the above list of strings
-# numbers =
+numbers = [int(x) for x in almost_numbers]
+print(numbers)
 
 # TODO: use a list comprehension to create a list of only the numbers that are
 # greater than 9 from the numbers (not strings) you just created
+greater_than_nine = [x for x in numbers if x > 9]
+print(greater_than_nine)
